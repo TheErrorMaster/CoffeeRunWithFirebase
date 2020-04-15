@@ -6,7 +6,6 @@
     function RemoteDataStore(url) {
     if (!url) {
         throw new Error('No remote URL supplied.');
-        return;
     }
     this.serverUrl = url;
     }
@@ -17,7 +16,7 @@
         });
     };
 
-    RemoteDataStore.prototype.getAll = function () {
+    RemoteDataStore.prototype.getAll = function (cb) {
         $.get(this.serverUrl, function (serverResponse) {
             console.log(serverResponse);
             cb(serverResponse);
@@ -39,5 +38,4 @@
 
     App.RemoteDataStore = RemoteDataStore;
     window.App = App;
-  })(window);
-  
+})(window);
